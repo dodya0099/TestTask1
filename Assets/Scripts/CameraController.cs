@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
-{ 
+{
     [Header("Настройки камеры")]
     public Transform target; // Объект персонажа
     public Vector3 offset = new Vector3(0, 5, -10); // Смещение камеры относительно персонажа
     public float smoothSpeed = 0.125f; // Скорость плавности
 
     [Header("Настройки направления")]
-    public float lookAheadDistance = 2f; // Смещение вперед от позиции персонажа для направления камеры
+    public float lookDownAngle = 2f; // Смещение вниз по оси Y для имитации наклона камеры
 
     void LateUpdate()
     {
@@ -20,16 +18,16 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        // Вычисляем позицию камеры позади персонажа, основываясь на его направлении
-        Vector3 desiredPosition = target.position + target.TransformDirection(offset);
-        
+        // Вычисляем позицию камеры позади персонажа на основе его направления
+        Vector3 desiredPosition = target.position - target.forward * offset.z + Vector3.up * offset.y;
+
         // Плавно перемещаем камеру к желаемой позиции
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        // Вычисляем точку перед персонажем, на которую будет смотреть камера
-        Vector3 lookTargetPosition = target.position + target.forward * lookAheadDistance;
+        // Вычисляем точку, на которую будет смотреть камера, добавляя наклон вниз
+        Vector3 lookTargetPosition = target.position + Vector3.up * lookDownAngle;
 
-        // Поворачиваем камеру, чтобы она была направлена чуть впереди персонажа
+        // Камера смотрит на смещенную точку, создавая эффект наклона
         transform.LookAt(lookTargetPosition);
     }
 }

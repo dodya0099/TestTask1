@@ -60,8 +60,11 @@
     <Compile Include="Assets\Scripts\UI Animation Manager.cs" />
     <Compile Include="Assets\Level Manager\Level.cs" />
     <Compile Include="Assets\Level Manager\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\pickups\Bottle.cs" />
+    <Compile Include="Assets\Scripts\DoorController.cs" />
     <Compile Include="Assets\Scripts\pickups\Pickup.cs" />
     <Compile Include="Assets\Scripts\Sound Manager.cs" />
+    <Compile Include="Assets\Scripts\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\Level Manager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\InputComponent.cs" />

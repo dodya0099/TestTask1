@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
@@ -27,7 +25,6 @@ public abstract class Pickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("YEP");
         if (collision.CompareTag("Player"))
         {
             PlaySound();
